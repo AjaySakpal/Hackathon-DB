@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinTrak - Budget Planner</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f8fb; margin: 0; padding: 0; }
+    header { background-color: #004670; color: white; padding: 1rem; text-align: center; }
+    section { padding: 2rem; max-width: 700px; margin: auto; background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h2 { color: #004670; margin-bottom: 1rem; }
+    label { display: block; margin-top: 1rem; font-weight: bold; }
+    input, select { width: 100%; padding: 0.5rem; margin-top: 0.3rem; border-radius: 5px; border: 1px solid #ccc; }
+    button { margin-top: 1.5rem; background-color: #004670; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; }
+    .budget-list { margin-top: 2rem; }
+    .budget-item { background: #e8f0fa; padding: 1rem; margin-bottom: 0.75rem; border-left: 5px solid #004670; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>FinTrak - Budget Planner</h1>
+</header>
+
+<section>
+  <h2>Create New Budget</h2>
+  <form id="budgetForm">
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" placeholder="e.g., Marketing, Salaries" required />
+
+    <label for="amount">Budget Amount</label>
+    <input type="number" id="amount" name="amount" placeholder="e.g., 5000" required />
+
+    <label for="period">Time Period</label>
+    <select id="period" name="period">
+      <option value="Monthly">Monthly</option>
+      <option value="Quarterly">Quarterly</option>
+    </select>
+
+    <button type="submit">Add Budget</button>
+  </form>
+
+  <div class="budget-list" id="budgetList">
+    <h2>Current Budgets</h2>
+    <!-- Budget items will appear here -->
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('budgetForm');
+  const budgetList = document.getElementById('budgetList');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const category = document.getElementById('category').value;
+    const amount = document.getElementById('amount').value;
+    const period = document.getElementById('period').value;
+
+    const item = document.createElement('div');
+    item.className = 'budget-item';
+    item.innerHTML = `<strong>${category}</strong>: ₹${amount} (${period})`;
+    budgetList.appendChild(item);
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

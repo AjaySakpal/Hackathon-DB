@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wellness Grove Finance Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Login Form -->
+    <div class="container" id="loginContainer">
+        <h1>🌿 DB Hackathon Business Tracker</h1>
+        <form id="loginForm">
+            <label for="businessName">Enter Business Name</label>
+            <input type="text" id="businessName" required placeholder="Eg: Wellness Grove Spa">
+
+            <label for="incomeSources">Income Sources (comma separated)</label>
+            <input type="text" id="incomeSources" required placeholder="Eg: Massage, Product Sale">
+
+            <label for="expenseSources">Expense Sources (comma separated)</label>
+            <input type="text" id="expenseSources" required placeholder="Eg: Rent, Oils, Salaries">
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Main App (hidden by default) -->
+    <div class="container" id="mainContainer" style="display:none;">
+        <h1 id="displayBusinessName"></h1>
+        <form id="financeForm">
+            <label for="type">Type</label>
+            <select id="type" required>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+
+            <label for="desc">Description</label>
+            <select id="desc" required></select>
+            <label for="amount">Amount (₹)</label>
+            <input type="number" id="amount" required>
+
+            <button type="submit">Add Entry</button>
+        </form>
+
+        <div class="summary">
+            <h2>💼 Financial Summary</h2>
+            <p><strong>Total Income:</strong> ₹<span id="totalIncome">0</span></p>
+            <p><strong>Total Expense:</strong> ₹<span id="totalExpense">0</span></p>
+            <p><strong>Net Balance:</strong> ₹<span id="netBalance">0</span></p>
+        </div>
+
+        <div id="entries"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
